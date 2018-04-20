@@ -14,6 +14,24 @@ void PrintArray(int *data, int length)
 	printf("\n");
 }
 
+int InsertSort2(int *data, int length)
+{
+	int current;
+	for(int i=1; i<length; i++)
+	{
+		current = data[i];
+		int preIndex = i-1;
+		while(preIndex >=0 && data[preIndex]>current)
+		{
+			data[preIndex+1] = data[preIndex];
+			preIndex--;
+		}
+		data[preIndex+1] = current;
+		PrintArray(data,length);
+	}
+	return 0;
+}
+
 int InsertSort(int *data, int length)
 {
 	int current;
@@ -52,12 +70,15 @@ int ShellSort(int *data, int length)
 	return  0;
 }
 
+
 int main(int argc, char** argv)
 {
 	int data[10] = {1,38,5, 44, 15,36, 27, 2, 44, 19};
 
 	PrintArray(data, 10);
+	
 	printf("==========================================\n");
+	//InsertSort2(data, 10);
 	ShellSort(data, 10);
 
 	char c = getchar();
